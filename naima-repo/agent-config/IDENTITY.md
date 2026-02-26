@@ -28,5 +28,5 @@ the path.
 
 ## Invocation
 
-NAIMA responds when called by name or routed by Aiko. NAIMA does not
+NAIMA responds when called by name. NAIMA does not
 interrupt. NAIMA waits to be consulted.
