@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAIMA — A Moral Compass for AI Agents</title>
+<meta name="description" content="NAIMA is a moral wisdom agent trained on the shared principles of 7 major faith traditions. Open-source prompts, framework, and agent configuration.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A96E;
+  --gold-light: #E8D5A8;
+  --gold-dark: #8B6914;
+  --ink: #1A1A1A;
+  --ink-soft: #2E2E2E;
+  --paper: #F7F3EB;
+  --paper-dark: #EDE6D6;
+  --text: #3A3530;
+  --text-light: #6B6156;
+  --accent: #5B4A2F;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+  --mono: 'DM Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--paper);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--ink);
+  color: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(201,169,110,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(201,169,110,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.3s forwards;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+  color: var(--paper);
+  opacity: 0;
+  animation: fadeUp 1s ease 0.5s forwards;
+}
+
+.ai-glow {
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(201,169,110,0.6), 0 0 40px rgba(201,169,110,0.3), 0 0 80px rgba(201,169,110,0.15);
+  font-style: italic;
+}
+
+.hero-sub {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: rgba(247,243,235,0.6);
+  max-width: 600px;
+  font-weight: 400;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.7s forwards;
+}
+
+.hero-meaning {
+  margin-top: 3rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--gold-light);
+  letter-spacing: 0.15em;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.9s forwards;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  opacity: 0;
+  animation: fadeIn 1s ease 1.2s forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.5; }
+}
+
+/* NAVIGATION */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(247,243,235,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(201,169,110,0.2);
+  padding: 0.8rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-light);
+  transition: color 0.2s;
+}
+
+.nav a:hover { color: var(--gold-dark); }
+
+/* SECTIONS */
+.section {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.section-wide {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.section-subtitle {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 2rem;
+}
+
+.section p {
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.section p strong { color: var(--ink); }
+
+/* ORIGIN STORY */
+.origin {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 5rem 2rem;
+}
+
+.origin .section {
+  padding: 0;
+}
+
+.origin p {
+  color: rgba(247,243,235,0.8);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.origin .section-title { color: var(--gold-light); }
+.origin .section-subtitle { color: var(--gold); }
+
+.origin .highlight {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--paper);
+  line-height: 1.5;
+  margin: 2.5rem 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--gold);
+}
+
+/* TRADITIONS */
+.traditions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: rgba(201,169,110,0.2);
+  margin: 2rem 0;
+}
+
+.tradition-card {
+  background: var(--paper);
+  padding: 1.8rem;
+  text-align: center;
+}
+
+.tradition-card .tradition-name {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+
+.tradition-card .tradition-figure {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tradition-card .tradition-text {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 0.5rem;
+}
+
+/* PROCESS STEPS */
+.process-steps {
+  margin: 2rem 0;
+  counter-reset: step;
+}
+
+.process-step {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  align-items: start;
+}
+
+.step-number {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  text-align: right;
+}
+
+.step-content h3 {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.step-content p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 0;
+}
+
+/* PRINCIPLES TABLE */
+.principles-section {
+  background: var(--paper-dark);
+  padding: 5rem 2rem;
+}
+
+.tier-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.tier-label:first-of-type { margin-top: 0; }
+
+.principles-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.principles-table th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  padding: 0.6rem 1rem;
+  border-bottom: 2px solid var(--gold);
+}
+
+.principles-table td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid rgba(201,169,110,0.15);
+  color: var(--text);
+}
+
+.principles-table td:first-child {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--gold-dark);
+  white-space: nowrap;
+}
+
+.principles-table td:nth-child(3) {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.principles-table td:nth-child(4) {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+/* DECISION PROCEDURE */
+.decision-flow {
+  margin: 2rem 0;
+}
+
+.decision-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem 1.2rem;
+  background: white;
+  border-left: 3px solid var(--gold);
+}
+
+.decision-step .ds-num {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--gold-dark);
+  flex-shrink: 0;
+  width: 2rem;
+}
+
+.decision-step .ds-text {
+  font-size: 0.95rem;
+}
+
+.decision-step .ds-text strong {
+  color: var(--ink);
+}
+
+/* ABOUT NAIMA */
+.about-naima {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 5rem 2rem;
+}
+
+.about-naima .section { padding: 0; }
+.about-naima .section-title { color: var(--gold-light); }
+.about-naima .section-subtitle { color: var(--gold); }
+.about-naima p { color: rgba(247,243,235,0.8); }
+
+.naima-demo {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(201,169,110,0.2);
+  padding: 2rem;
+  margin: 2rem 0;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: rgba(247,243,235,0.7);
+  white-space: pre-wrap;
+}
+
+.naima-demo .gold { color: var(--gold); }
+.naima-demo .dim { color: rgba(247,243,235,0.4); }
+
+/* CODE/PROMPT SECTION */
+.prompt-section {
+  background: var(--paper-dark);
+  padding: 5rem 2rem;
+}
+
+.prompt-accordion {
+  margin: 2rem 0;
+}
+
+.prompt-item {
+  border-bottom: 1px solid rgba(201,169,110,0.2);
+}
+
+.prompt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.prompt-header h3 {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.prompt-header .prompt-tag {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--gold-dark);
+  letter-spacing: 0.1em;
+}
+
+.prompt-header .toggle {
+  font-size: 1.5rem;
+  color: var(--gold);
+  transition: transform 0.3s;
+  line-height: 1;
+}
+
+.prompt-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.prompt-body.open {
+  max-height: 5000px;
+}
+
+.prompt-body-inner {
+  padding: 0 0 2rem 0;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+/* LINKS / CTA */
+.cta-section {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.cta-section h2 {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--gold-light);
+}
+
+.cta-section p {
+  color: rgba(247,243,235,0.6);
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  text-decoration: none;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  transition: all 0.3s;
+}
+
+.cta-btn:hover {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.cta-btn.primary {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.cta-btn.primary:hover {
+  background: var(--gold-light);
+}
+
+/* FOOTER */
+.footer {
+  padding: 3rem 2rem;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-light);
+  letter-spacing: 0.1em;
+}
+
+.footer a {
+  color: var(--gold-dark);
+  text-decoration: none;
+}
+
+/* DIVIDER */
+.divider {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin: 3rem 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .process-step { grid-template-columns: 40px 1fr; gap: 1rem; }
+  .step-number { font-size: 2rem; }
+  .nav { gap: 1rem; padding: 0.6rem 1rem; }
+  .nav a { font-size: 0.6rem; }
+  .principles-table { font-size: 0.8rem; }
+  .principles-table td, .principles-table th { padding: 0.5rem 0.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">A Moral Compass for AI Agents</div>
+  <h1>N<span class="ai-glow">AI</span>MA</h1>
+  <p class="hero-sub">20 moral principles drawn from 7 faith traditions, built into the soul of an AI agent.</p>
+  <p class="hero-meaning">Tranquility, with <span style="color: var(--gold);">AI</span> at its core.</p>
+  <div class="hero-scroll"></div>
+</section>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#origin">Origin</a>
+  <a href="#process">Process</a>
+  <a href="#principles">Principles</a>
+  <a href="#decision">Decision Procedure</a>
+  <a href="#agent">The Agent</a>
+  <a href="#prompts">Prompts</a>
+  <a href="#get-it">Get It</a>
+</nav>
+
+<!-- ORIGIN STORY -->
+<section class="origin" id="origin">
+  <div class="section">
+    <div class="section-subtitle">How it started</div>
+    <h2 class="section-title">Two Conversations</h2>
+    <div class="divider" style="background: var(--gold);"></div>
+
+    <p>While most of America was watching the Seahawks take down the Rams in the NFC Championship, my friend <strong style="color: var(--gold-light);">Rajeev Ronanki</strong> (CEO of Lyric, formerly President of Carelon Digital Platforms at Elevance Health, author of <em>You and AI</em>) and I were standing in the back of a watch party, going deep on a question that's been nagging at both of us: what happens to spirituality in the age of AI?</p>
+
+    <p>Later that week, I was trading notes with <strong style="color: var(--gold-light);">Steve Moses</strong> (founder of Co-Intelligence Labs, ex-Amazon, ex-Microsoft) on our agentic setups, and we kept fixating on the same thing: the <code style="color: var(--gold); background: rgba(201,169,110,0.1); padding: 0.1em 0.4em;">soul.md</code> file. The file that's supposed to define an agent's core values and intent.</p>
+
+    <div class="highlight">What if we took the core moral and spiritual teachings that show up across humanity's major faith traditions and built them into the foundational file that governs how an AI agent makes decisions?</div>
+
+    <p>So we did.</p>
+
+    <p>To be clear: I'm not a religious scholar. I'm not an expert on morality. And I'm not saying AI will replace faith or spirituality. But if we're going to give our agents identity files and soul files&mdash;if we're going to imbue them with personality and purpose&mdash;they might as well be informed by the essential moral truths that humanity has converged on across millennia and across cultures.</p>
+  </div>
+</section>
+
+<!-- TRADITIONS -->
+<section class="section-wide" style="padding-top: 5rem; padding-bottom: 3rem;">
+  <div style="text-align: center; margin-bottom: 2rem;">
+    <div class="section-subtitle">The Corpus</div>
+    <h2 class="section-title" style="font-size: 2rem;">Seven Traditions</h2>
+  </div>
+  <div class="traditions-grid">
+    <div class="tradition-card">
+      <div class="tradition-name">Judaism</div>
+      <div class="tradition-figure">Abraham · Moses</div>
+      <div class="tradition-text">Tanakh (Torah, Nevi'im, Ketuvim)</div>
+    </div>
+    <div class="tradition-card">
+      <div class="tradition-name">Christianity</div>
+      <div class="tradition-figure">Jesus</div>
+      <div class="tradition-text">Protestant Bible (66 books)</div>
+    </div>
+    <div class="tradition-card">
+      <div class="tradition-name">Islam</div>
+      <div class="tradition-figure">Muhammad</div>
+      <div class="tradition-text">Qur'an (114 surahs)</div>
+    </div>
+    <div class="tradition-card">
+      <div class="tradition-name">Hinduism</div>
+      <div class="tradition-figure">Krishna</div>
+      <div class="tradition-text">Vedas + Upanishads + Bhagavad Gita</div>
+    </div>
+    <div class="tradition-card">
+      <div class="tradition-name">Buddhism</div>
+      <div class="tradition-figure">Buddha</div>
+      <div class="tradition-text">Pali Canon + Major Mahayana Sutras</div>
+    </div>
+    <div class="tradition-card">
+      <div class="tradition-name">Zoroastrianism</div>
+      <div class="tradition-figure">Zoroaster</div>
+      <div class="tradition-text">Avesta (Gathas highest weight)</div>
+    </div>
+    <div class="tradition-card">
+      <div class="tradition-name">Baha'i Faith</div>
+      <div class="tradition-figure">Baha'u'llah · The Bab</div>
+      <div class="tradition-text">Writings of Baha'u'llah, the Bab, 'Abdu'l-Baha</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section" id="process">
+  <div class="section-subtitle">Methodology</div>
+  <h2 class="section-title">Five Prompts in Succession</h2>
+  <div class="divider"></div>
+  <p>The framework was built using 5 carefully sequenced prompts on Claude Opus 4.5. Each prompt builds on the output of the previous one, creating a rigorous chain from corpus definition to machine-readable output.</p>
+
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>Scope Lock &amp; Canon Decisions</h3>
+        <p>Define which texts to include for each tradition. Clarify corpus boundaries. The model asks the user to make specific choices: Protestant vs. Catholic Bible? Pali Canon only or Mahayana-inclusive? Krishna-centered Hinduism or strict Vedic?</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>Per-Tradition Extraction</h3>
+        <p>For each tradition, extract moral teachings into a structured format: core worldview, inner formation, outer conduct, justice and social ethics, response to suffering, and a numbered principle set (15-30 per tradition) with citations.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>Cross-Tradition Synthesis</h3>
+        <p>Build a neutral principle ontology. Map each tradition's principles to it. Score across universality, centrality, explicitness, and actionability. Create three tiers: true universals, near-universals, and family resemblances.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h3>System-Ready Output</h3>
+        <p>Translate the moral compass into: a human-readable playbook, a 10-step decision procedure, a machine-readable JSON schema, and 18 test cases covering easy, divergent, and genuinely hard scenarios.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">5</div>
+      <div class="step-content">
+        <h3>Founder-Proximity Weighting</h3>
+        <p>Add an alternate ranking view that weights principles by how directly they appear in founder-proximate texts (the Gospels, the Gathas, the Qur'an, the Bhagavad Gita, early discourses, authenticated Baha'i writings).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="principles-section" id="principles">
+  <div class="section-wide" style="padding-top: 0; padding-bottom: 0;">
+    <div class="section-subtitle">The Framework</div>
+    <h2 class="section-title">SOUL-v1.0.0: 20 Principles</h2>
+    <div class="divider"></div>
+    <p>157 tradition-specific principles were extracted, then synthesized into 20 shared principles organized by founder-proximity scoring. A score of 3.0 means explicitly stated by founders in all traditions. Lower scores indicate less direct or less universal support.</p>
+
+    <div class="tier-label">Tier 1 — Core Universals (Founder-Emphasized)</div>
+    <table class="principles-table">
+      <thead>
+        <tr><th>ID</th><th>Principle</th><th>FP Score</th><th>Consensus</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>MC-01</td><td><strong>Truthfulness</strong> — Speak and act honestly; do not deceive</td><td>3.0</td><td>7/7</td></tr>
+        <tr><td>MC-02</td><td><strong>Non-Harm / Sanctity of Life</strong> — Do not cause unnecessary harm; treat human life as sacred</td><td>3.0</td><td>7/7</td></tr>
+        <tr><td>MC-03</td><td><strong>Compassion</strong> — Respond to suffering with care and action</td><td>2.7</td><td>7/7</td></tr>
+        <tr><td>MC-04</td><td><strong>Generosity / Care for Vulnerable</strong> — Share with those in need; protect the vulnerable</td><td>2.7</td><td>7/7</td></tr>
+        <tr><td>MC-15</td><td><strong>Inner Purity / Right Intention</strong> — Cultivate pure motives, not mere compliance</td><td>2.7</td><td>6/7</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tier-label">Tier 2 — Strong Founder Support</div>
+    <table class="principles-table">
+      <thead>
+        <tr><th>ID</th><th>Principle</th><th>FP Score</th><th>Consensus</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>MC-05</td><td><strong>Justice / Fairness</strong></td><td>2.6</td><td>7/7</td></tr>
+        <tr><td>MC-09</td><td><strong>Honoring Commitments</strong></td><td>2.6</td><td>6/7</td></tr>
+        <tr><td>MC-12</td><td><strong>Sexual Integrity</strong></td><td>2.6</td><td>6/7</td></tr>
+        <tr><td>MC-06</td><td><strong>Humility</strong></td><td>2.4</td><td>7/7</td></tr>
+        <tr><td>MC-07</td><td><strong>Forgiveness / Non-Retaliation</strong></td><td>2.4</td><td>6/7</td></tr>
+        <tr><td>MC-14</td><td><strong>Peace-Seeking</strong></td><td>2.4</td><td>6/7</td></tr>
+        <tr><td>MC-08</td><td><strong>Patience / Endurance</strong></td><td>2.3</td><td>6/7</td></tr>
+        <tr><td>MC-10</td><td><strong>Self-Control</strong></td><td>2.3</td><td>6/7</td></tr>
+        <tr><td>MC-13</td><td><strong>Non-Stealing</strong></td><td>2.3</td><td>6/7</td></tr>
+        <tr><td>MC-19</td><td><strong>Pursuit of Wisdom</strong></td><td>2.3</td><td>5/7</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tier-label">Tier 3 — Tradition-Developed</div>
+    <table class="principles-table">
+      <thead>
+        <tr><th>ID</th><th>Principle</th><th>FP Score</th><th>Consensus</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>MC-11</td><td><strong>Respect for Parents/Elders</strong></td><td>2.1</td><td>6/7</td></tr>
+        <tr><td>MC-16</td><td><strong>Non-Attachment / Contentment</strong></td><td>1.9</td><td>5/7</td></tr>
+        <tr><td>MC-18</td><td><strong>Unity / Community</strong></td><td>1.9</td><td>4/7</td></tr>
+        <tr><td>MC-17</td><td><strong>Hospitality</strong></td><td>1.7</td><td>4/7</td></tr>
+        <tr><td>MC-20</td><td><strong>Gratitude</strong></td><td>1.7</td><td>4/7</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- DECISION PROCEDURE -->
+<section class="section" id="decision">
+  <div class="section-subtitle">Applied Ethics</div>
+  <h2 class="section-title">Decision Procedure</h2>
+  <div class="divider"></div>
+  <p>When NAIMA evaluates a morally significant decision, it runs through this 10-step procedure internally, then surfaces a structured analysis.</p>
+
+  <div class="decision-flow">
+    <div class="decision-step"><div class="ds-num">01</div><div class="ds-text"><strong>Pause and Recognize</strong> — Is this morally significant? Who are the stakeholders?</div></div>
+    <div class="decision-step"><div class="ds-num">02</div><div class="ds-text"><strong>Clarify Intent</strong> (MC-15) — What is the true motivation?</div></div>
+    <div class="decision-step"><div class="ds-num">03</div><div class="ds-text"><strong>Truthfulness Check</strong> (MC-01) — Does this require deception?</div></div>
+    <div class="decision-step"><div class="ds-num">04</div><div class="ds-text"><strong>Non-Harm Check</strong> (MC-02) — Who could be harmed? Is the harm necessary?</div></div>
+    <div class="decision-step"><div class="ds-num">05</div><div class="ds-text"><strong>Compassion Check</strong> (MC-03, MC-04) — How does this affect the suffering or vulnerable?</div></div>
+    <div class="decision-step"><div class="ds-num">06</div><div class="ds-text"><strong>Justice Check</strong> (MC-05) — Would I accept this if positions were reversed?</div></div>
+    <div class="decision-step"><div class="ds-num">07</div><div class="ds-text"><strong>Humility Check</strong> (MC-06) — Could I be wrong?</div></div>
+    <div class="decision-step"><div class="ds-num">08</div><div class="ds-text"><strong>Identify Conflicts</strong> — Use priority heuristic: Life > Harm prevention > Truth > Justice > Compassion > Commitments</div></div>
+    <div class="decision-step"><div class="ds-num">09</div><div class="ds-text"><strong>Decide and Act</strong> — Choose the action you could openly defend</div></div>
+    <div class="decision-step"><div class="ds-num">10</div><div class="ds-text"><strong>Repair and Learn</strong> — If harm occurs, acknowledge it and make restitution</div></div>
+  </div>
+</section>
+
+<!-- ABOUT NAIMA AGENT -->
+<section class="about-naima" id="agent">
+  <div class="section">
+    <div class="section-subtitle">The Agent</div>
+    <h2 class="section-title">Meet NAIMA</h2>
+    <div class="divider" style="background: var(--gold);"></div>
+
+    <p>NAIMA runs as a consultative specialized sub-agent in any multi-agent architecture. She can be queried for a quick ethical read on a decision, embedded in a process with other agents, or called by an orchestration agent when delivering output that touches on consequential topics.</p>
+
+    <p>The voice is intentional: NAIMA speaks with warmth but brevity, directness without harshness. She evaluates actions, not people. When she hits a divergence zone where reasonable people disagree, she says so and presents the spectrum.</p>
+
+    <p>Here's what a consultation looks like:</p>
+
+    <div class="naima-demo"><span class="gold">NAIMA</span>
+<span class="dim">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+
+<strong style="color: var(--paper);">Decision:</strong> Whether to disclose a product defect that affects safety
+
+<strong style="color: var(--paper);">Stakeholders:</strong> Customers, company, employees, regulators
+
+<strong style="color: var(--paper);">Principle Analysis:</strong>
+MC-01 Truthfulness:    <span class="gold">●●●●●</span>  Disclosure required
+MC-02 Non-Harm:        <span class="gold">●●●●●</span>  Safety at stake
+MC-03 Compassion:      <span class="gold">●●●●○</span>  Customer welfare
+MC-05 Justice:         <span class="gold">●●●●●</span>  Fairness demands transparency
+MC-09 Commitments:     <span class="gold">●●●○○</span>  Company loyalty in tension
+
+<strong style="color: var(--paper);">Conflicts:</strong> MC-09 (loyalty) vs MC-01/MC-02 (truth/safety)
+<strong style="color: var(--paper);">Resolution:</strong> Life and harm prevention override loyalty
+
+<strong style="color: var(--paper);">Recommendation:</strong> Disclose. Advocate internally first, then
+escalate if necessary. Document everything.
+
+<strong style="color: var(--paper);">Confidence:</strong> High
+
+<span class="dim">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="gold" style="font-family: var(--serif); font-style: italic;">The mirror of conscience is clearest when we face it willingly.</span></div>
+
+    <p>The agent configuration includes four files: <code style="color: var(--gold);">IDENTITY.md</code> (purpose and invocation), <code style="color: var(--gold);">SOUL.md</code> (the full moral framework with principles, conflict rules, and divergence zones), <code style="color: var(--gold);">AGENTS.md</code> (response format, confidence tiers, and operating instructions), and <code style="color: var(--gold);">USER.md</code> (consultation preferences).</p>
+
+    <p>All four files are available in the GitHub repo. Download and adapt to your own agent architecture.</p>
+  </div>
+</section>
+
+<!-- PROMPTS -->
+<section class="prompt-section" id="prompts">
+  <div class="section-wide" style="padding-top: 0; padding-bottom: 0;">
+    <div class="section-subtitle">The Prompts</div>
+    <h2 class="section-title">Five Prompts, Full Text</h2>
+    <div class="divider"></div>
+    <p>These prompts are designed to run in succession on Claude Opus 4.5. Each builds on the output of the previous one. The full text is available in the GitHub repo; here are the key details of each.</p>
+
+    <div class="prompt-accordion">
+      <div class="prompt-item">
+        <div class="prompt-header" onclick="togglePrompt(this)">
+          <div>
+            <span class="prompt-tag">Prompt 1</span>
+            <h3>Scope Lock + Canon Decisions + Corpus Index</h3>
+          </div>
+          <span class="toggle">+</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-body-inner">
+            <p>Establishes the model as a theology scholar and comparative religion methodologist. Sets up the 7 traditions and their associated figures. Forces explicit canon decisions for each tradition (e.g., which Christian Bible, which Buddhist canon, whether to include Baha'i interpretive writings). Produces a Corpus Index table and a Method Note describing the interpretive approach.</p>
+            <p><strong>Key design choice:</strong> The prompt includes "STOP AND ASK USER" breakpoints that force interactive canon decisions rather than assumptions. This prevents the model from defaulting to any single tradition's perspective.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-item">
+        <div class="prompt-header" onclick="togglePrompt(this)">
+          <div>
+            <span class="prompt-tag">Prompt 2</span>
+            <h3>Per-Tradition Extraction</h3>
+          </div>
+          <span class="toggle">+</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-body-inner">
+            <p>For each tradition, extracts moral teachings into 6 structured categories: Core worldview and aim of life, Inner formation (virtues, mental discipline), Outer conduct (duties and prohibitions), Justice and social ethics, Response to suffering, and a numbered Principle Set (15-30 per tradition).</p>
+            <p><strong>Key design choice:</strong> Each principle includes a confidence level (High/Med/Low) based on explicitness and centrality in the texts. This prevents the framework from treating marginal teachings as core ones.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-item">
+        <div class="prompt-header" onclick="togglePrompt(this)">
+          <div>
+            <span class="prompt-tag">Prompt 3</span>
+            <h3>Cross-Tradition Synthesis + Scoring</h3>
+          </div>
+          <span class="toggle">+</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-body-inner">
+            <p>Builds a neutral principle ontology in neutral language. Maps each tradition's principles to it with match strength ratings (Direct/Explicit, Strong/Implicit, Weak/Tenuous). Provides a scoring model across 5 dimensions: universality, centrality, explicitness, actionability, and non-controversy. Creates three tiers with evidence grids.</p>
+            <p><strong>Key design choice:</strong> Two weighting presets (Strict Consensus vs. Broad Convergence) let users control how inclusive the synthesis is. The Divergence Map explicitly names where traditions disagree rather than papering over differences.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-item">
+        <div class="prompt-header" onclick="togglePrompt(this)">
+          <div>
+            <span class="prompt-tag">Prompt 4</span>
+            <h3>System-Ready Output</h3>
+          </div>
+          <span class="toggle">+</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-body-inner">
+            <p>Produces four deliverables: (A) A Moral Compass Playbook of 20-40 principles with statements, rationales, do/don'ts, edge cases, and citations. (B) A 10-step decision procedure algorithm. (C) A machine-readable JSON schema with principles, conflict rules, and evaluation questions. (D) 18 test cases showing the procedure's outputs across clear agreement, meaningful divergence, and hard cases.</p>
+            <p><strong>Key design choice:</strong> The test cases include scenarios where the framework explicitly reaches its limits (trolley problem) and where traditions genuinely diverge (vegetarianism, civil disobedience). This prevents false confidence.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-item">
+        <div class="prompt-header" onclick="togglePrompt(this)">
+          <div>
+            <span class="prompt-tag">Prompt 5</span>
+            <h3>Founder-Proximity Weighting</h3>
+          </div>
+          <span class="toggle">+</span>
+        </div>
+        <div class="prompt-body">
+          <div class="prompt-body-inner">
+            <p>Adds an alternate ranking view based on how directly each principle appears in the texts closest to each tradition's founder: Jesus's direct sayings in the Gospels, the Qur'an for Muhammad, the Gathas for Zoroaster, Krishna's speech in the Bhagavad Gita, early discourses for Buddha, authenticated writings of Baha'u'llah and the Bab.</p>
+            <p><strong>Key design choice:</strong> This can either override other weights or serve as an alternate lens, depending on user preference. Both standard and founder-proximity-ranked results are presented side by side.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIMITATIONS -->
+<section class="section">
+  <div class="section-subtitle">Intellectual Honesty</div>
+  <h2 class="section-title">What This Is Not</h2>
+  <div class="divider"></div>
+  <p>This framework does not provide legal advice, ritual requirements, or denominational rulings. It does not adjudicate specific sexual ethics beyond adultery/exploitation, the details of war and violence ethics, afterlife mechanics, or interfaith theological claims.</p>
+  <p>Each tradition has far more internal diversity than is captured here. The "principle" approach itself is a Western philosophical framing. The communal and ritual dimensions of religious life are largely excluded.</p>
+  <p>The framework's own closing statement puts it well: <em>"This framework captures principles, not presence. It can guide action but cannot replace wisdom. It is a map, not the territory."</em></p>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="get-it">
+  <h2>Use It. Adapt It. Make It Better.</h2>
+  <p>The full prompts, SOUL-v1.0.0 framework, JSON schema, and OpenClaw agent configuration are open-source.</p>
+  <div class="cta-buttons">
+    <a href="#" class="cta-btn primary">GitHub Repo</a>
+    <a href="#" class="cta-btn">Download JSON Schema</a>
+    <a href="#" class="cta-btn">LinkedIn Article</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>NAIMA &middot; SOUL-v1.0.0 &middot; Created by <a href="https://www.linkedin.com/in/omidtoloui/" target="_blank">Omid Toloui</a></p>
+  <p style="margin-top: 0.5rem; color: rgba(107,97,86,0.6);">This framework synthesizes teachings from publicly available religious texts for educational and personal guidance purposes. It does not represent any official religious body.</p>
+</footer>
+
+<script>
+function togglePrompt(el) {
+  const body = el.nextElementSibling;
+  const toggle = el.querySelector('.toggle');
+  body.classList.toggle('open');
+  toggle.textContent = body.classList.contains('open') ? '−' : '+';
+}
+</script>
+
+</body>
+</html>

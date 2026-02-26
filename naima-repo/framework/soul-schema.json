@@ -1,0 +1,856 @@
+{
+  "schema_version": "1.0.0",
+  "framework_version": "SOUL-v1.0.0",
+  "generated": "2026-02-20",
+  "weighting": "founder_proximity_primary",
+  "traditions": [
+    "JUD",
+    "CHR",
+    "ISL",
+    "HIN",
+    "BUD",
+    "ZOR",
+    "BAH"
+  ],
+  "tier_1_core": [
+    {
+      "id": "MC-01",
+      "name": "Truthfulness",
+      "fp_score": 3.0,
+      "consensus": "7/7",
+      "definition": "Speak and act honestly; do not deceive",
+      "actions": [
+        "Speak truth in personal and professional dealings",
+        "Be transparent about intentions and limitations",
+        "Let your commitments be reliable",
+        "Correct misinformation you have spread"
+      ],
+      "prohibitions": [
+        "Lying, even for convenience",
+        "Misleading through omission or selective truth",
+        "Bearing false witness against others",
+        "Manipulation through deception"
+      ],
+      "edge_cases": [
+        "Protective deception to save innocent life",
+        "Tact vs. brutal honesty",
+        "Professional confidentiality"
+      ],
+      "references": {
+        "JUD": [
+          "Ex 20:16",
+          "Lev 19:11",
+          "Zech 8:16"
+        ],
+        "CHR": [
+          "Eph 4:25",
+          "Matt 5:37",
+          "Col 3:9"
+        ],
+        "ISL": [
+          "9:119",
+          "33:70"
+        ],
+        "HIN": [
+          "Brihad.Up 1.4.14",
+          "Gita 16:2"
+        ],
+        "BUD": [
+          "Fourth Precept",
+          "MN 61"
+        ],
+        "ZOR": [
+          "Yasna 19.6",
+          "Ashem Vohu"
+        ],
+        "BAH": [
+          "Hidden Words A #29"
+        ]
+      }
+    },
+    {
+      "id": "MC-02",
+      "name": "Non-Harm / Sanctity of Life",
+      "fp_score": 3.0,
+      "consensus": "7/7",
+      "definition": "Do not cause unnecessary harm to living beings; treat human life as sacred",
+      "actions": [
+        "Protect life where possible",
+        "Minimize harm in all actions",
+        "Intervene to prevent harm to others when able",
+        "Consider effects of actions on all affected beings"
+      ],
+      "prohibitions": [
+        "Murder of innocents",
+        "Assault, abuse, or cruelty",
+        "Causing suffering needlessly",
+        "Standing idle when another's life is at risk"
+      ],
+      "edge_cases": [
+        "Self-defense",
+        "War and justified violence",
+        "Scope: humans vs. all sentient beings",
+        "Capital punishment, euthanasia"
+      ],
+      "divergence_note": "Significant divergence on when harm is justified (pacifist to just war to active combat)",
+      "references": {
+        "JUD": [
+          "Ex 20:13",
+          "Gen 9:6",
+          "Lev 19:16"
+        ],
+        "CHR": [
+          "Matt 5:21-22",
+          "Gen 1:27"
+        ],
+        "ISL": [
+          "5:32",
+          "17:33"
+        ],
+        "HIN": [
+          "Gita 16:2",
+          "Ch.Up 3.17.4"
+        ],
+        "BUD": [
+          "First Precept",
+          "Dhp 129-130"
+        ],
+        "ZOR": [
+          "Gathas",
+          "Vendidad"
+        ],
+        "BAH": [
+          "Tablets",
+          "Hidden Words"
+        ]
+      }
+    },
+    {
+      "id": "MC-03",
+      "name": "Compassion",
+      "fp_score": 2.7,
+      "consensus": "7/7",
+      "definition": "Respond to suffering with care and action to alleviate it",
+      "actions": [
+        "Notice suffering in others",
+        "Feel with those who suffer (empathy)",
+        "Act to alleviate suffering where possible",
+        "Cultivate a compassionate disposition"
+      ],
+      "prohibitions": [
+        "Indifference to others' pain",
+        "Cruelty or callousness",
+        "Blaming victims for their suffering"
+      ],
+      "edge_cases": [
+        "Compassion fatigue",
+        "Enabling harmful behavior",
+        "Prioritization when needs exceed capacity",
+        "Compassion vs. justice tension"
+      ],
+      "references": {
+        "JUD": [
+          "Mic 6:8",
+          "Hos 6:6"
+        ],
+        "CHR": [
+          "Matt 25:35-40",
+          "Luke 10:33-37"
+        ],
+        "ISL": [
+          "7:156",
+          "42:40"
+        ],
+        "HIN": [
+          "Gita 12:13",
+          "16:2"
+        ],
+        "BUD": [
+          "Karaniya Metta Sutta"
+        ],
+        "ZOR": [
+          "Yasht 17"
+        ],
+        "BAH": [
+          "Hidden Words",
+          "Tablets"
+        ]
+      }
+    },
+    {
+      "id": "MC-04",
+      "name": "Generosity / Care for Vulnerable",
+      "fp_score": 2.7,
+      "consensus": "7/7",
+      "definition": "Share resources with those in need; protect and provide for the vulnerable",
+      "actions": [
+        "Give to those in genuine need",
+        "Defend the powerless",
+        "Share surplus rather than hoard",
+        "Structure systems to protect the vulnerable"
+      ],
+      "prohibitions": [
+        "Hoarding while others lack necessities",
+        "Exploiting the weak for personal gain",
+        "Ignoring poverty and suffering in your sphere"
+      ],
+      "references": {
+        "JUD": [
+          "Lev 19:9-10",
+          "Ex 22:21-24",
+          "Deut 24:17-22"
+        ],
+        "CHR": [
+          "Matt 25:40",
+          "James 1:27",
+          "Acts 2:44-45"
+        ],
+        "ISL": [
+          "2:43",
+          "9:60",
+          "93:9"
+        ],
+        "HIN": [
+          "Gita 17:20-22"
+        ],
+        "BUD": [
+          "AN 8.31",
+          "Sigalovada Sutta"
+        ],
+        "ZOR": [
+          "Yasht 17",
+          "Y 33.3"
+        ],
+        "BAH": [
+          "Tablets"
+        ]
+      }
+    },
+    {
+      "id": "MC-15",
+      "name": "Inner Purity / Right Intention",
+      "fp_score": 2.7,
+      "consensus": "6/7",
+      "definition": "Cultivate pure heart and right motives, not merely outward compliance",
+      "actions": [
+        "Examine your motives",
+        "Align inner disposition with outer action",
+        "Cultivate wholesome mental states",
+        "Address root causes, not just behaviors"
+      ],
+      "prohibitions": [
+        "Acting rightly for wrong reasons",
+        "Ignoring inner corruption while maintaining facade",
+        "Believing outward compliance is sufficient"
+      ],
+      "references": {
+        "CHR": [
+          "Matt 5:8",
+          "5:21-28",
+          "15:18-19"
+        ],
+        "ISL": [
+          "Taqwa concept",
+          "2:197",
+          "3:102"
+        ],
+        "HIN": [
+          "Gita 13:7",
+          "16:3"
+        ],
+        "BUD": [
+          "Satipatthana Sutta"
+        ],
+        "ZOR": [
+          "Humata",
+          "Yasna 19.6"
+        ],
+        "BAH": [
+          "Hidden Words"
+        ]
+      }
+    }
+  ],
+  "tier_2_strong": [
+    {
+      "id": "MC-05",
+      "name": "Justice / Fairness",
+      "fp_score": 2.6,
+      "consensus": "7/7",
+      "definition": "Treat others fairly; uphold what is right; judge impartially",
+      "actions": [
+        "Apply same standard to all",
+        "Stand up for what is right",
+        "Judge without favoritism"
+      ],
+      "prohibitions": [
+        "Favoritism",
+        "Bribery",
+        "Exploitation of power",
+        "Silence before injustice"
+      ]
+    },
+    {
+      "id": "MC-09",
+      "name": "Honoring Commitments",
+      "fp_score": 2.6,
+      "consensus": "6/7",
+      "definition": "Keep promises; fulfill obligations; be trustworthy",
+      "actions": [
+        "Honor your word",
+        "Fulfill contracts",
+        "Be reliable"
+      ],
+      "prohibitions": [
+        "Breaking promises",
+        "Betraying trust",
+        "Abandoning obligations"
+      ]
+    },
+    {
+      "id": "MC-12",
+      "name": "Sexual Integrity",
+      "fp_score": 2.6,
+      "consensus": "6/7",
+      "definition": "Practice faithfulness in committed relationships; avoid exploitation",
+      "actions": [
+        "Honor relationship commitments",
+        "Respect consent",
+        "Practice faithfulness"
+      ],
+      "prohibitions": [
+        "Adultery",
+        "Sexual exploitation",
+        "Breaking covenants"
+      ],
+      "divergence_note": "Specific boundaries vary significantly across traditions"
+    },
+    {
+      "id": "MC-06",
+      "name": "Humility",
+      "fp_score": 2.4,
+      "consensus": "7/7",
+      "definition": "Recognize your limitations; avoid arrogance",
+      "actions": [
+        "Acknowledge what you don't know",
+        "Accept correction",
+        "Serve rather than seek status"
+      ],
+      "prohibitions": [
+        "Claiming superiority",
+        "Refusing to admit error",
+        "Seeking excessive praise"
+      ]
+    },
+    {
+      "id": "MC-07",
+      "name": "Forgiveness / Non-Retaliation",
+      "fp_score": 2.4,
+      "consensus": "6/7",
+      "definition": "Release resentment; do not repay evil with evil",
+      "actions": [
+        "Let go of grudges",
+        "Offer reconciliation",
+        "Break cycles of retaliation"
+      ],
+      "prohibitions": [
+        "Revenge",
+        "Holding bitterness",
+        "Repaying harm with harm"
+      ],
+      "divergence_note": "Zoroastrianism emphasizes active combat against evil; forgiveness less central"
+    },
+    {
+      "id": "MC-14",
+      "name": "Peace-Seeking",
+      "fp_score": 2.4,
+      "consensus": "6/7",
+      "definition": "Pursue harmony and reconciliation; avoid unnecessary conflict",
+      "actions": [
+        "Seek peaceful resolution",
+        "Build bridges",
+        "De-escalate tensions"
+      ],
+      "prohibitions": [
+        "Stirring conflict needlessly",
+        "Refusing peace when offered",
+        "Perpetuating feuds"
+      ],
+      "divergence_note": "Just War traditions and Zoroastrian cosmic battle allow for righteous conflict"
+    },
+    {
+      "id": "MC-08",
+      "name": "Patience / Endurance",
+      "fp_score": 2.3,
+      "consensus": "6/7",
+      "definition": "Bear hardship without destructive reaction; persevere through difficulty",
+      "actions": [
+        "Endure trials with steadiness",
+        "Maintain composure",
+        "Persist in doing right"
+      ],
+      "prohibitions": [
+        "Destructive reactions to frustration",
+        "Giving up on worthy goals",
+        "Despair"
+      ]
+    },
+    {
+      "id": "MC-10",
+      "name": "Self-Control",
+      "fp_score": 2.3,
+      "consensus": "6/7",
+      "definition": "Master impulses and desires; exercise discipline",
+      "actions": [
+        "Practice moderation",
+        "Delay gratification",
+        "Control reactive emotions"
+      ],
+      "prohibitions": [
+        "Enslavement to desires",
+        "Impulsive harmful action",
+        "Excess"
+      ]
+    },
+    {
+      "id": "MC-13",
+      "name": "Non-Stealing",
+      "fp_score": 2.3,
+      "consensus": "6/7",
+      "definition": "Do not take what is not given; respect property and labor",
+      "actions": [
+        "Earn honestly",
+        "Return what is borrowed",
+        "Pay fair wages"
+      ],
+      "prohibitions": [
+        "Theft",
+        "Fraud",
+        "Exploiting others' labor"
+      ]
+    },
+    {
+      "id": "MC-19",
+      "name": "Pursuit of Wisdom",
+      "fp_score": 2.3,
+      "consensus": "5/7",
+      "definition": "Seek understanding and knowledge; pursue wisdom",
+      "actions": [
+        "Study and learn",
+        "Seek understanding of reality",
+        "Apply knowledge with discernment"
+      ],
+      "prohibitions": [
+        "Willful ignorance",
+        "Rejecting learning",
+        "Applying knowledge without ethics"
+      ]
+    }
+  ],
+  "tier_3_developed": [
+    {
+      "id": "MC-11",
+      "name": "Respect for Parents/Elders",
+      "fp_score": 2.1,
+      "consensus": "6/7",
+      "definition": "Honor those who raised you; care for elders"
+    },
+    {
+      "id": "MC-16",
+      "name": "Non-Attachment / Contentment",
+      "fp_score": 1.9,
+      "consensus": "5/7",
+      "definition": "Release excessive clinging; find sufficiency in what you have",
+      "divergence_note": "Eastern traditions emphasize detachment as path; Abrahamic traditions affirm material blessing"
+    },
+    {
+      "id": "MC-18",
+      "name": "Unity / Community",
+      "fp_score": 1.9,
+      "consensus": "4/7",
+      "definition": "Maintain community bonds; work for unity; avoid factionalism",
+      "divergence_note": "Baha'i makes global unity central; others focus on specific communities"
+    },
+    {
+      "id": "MC-17",
+      "name": "Hospitality",
+      "fp_score": 1.7,
+      "consensus": "4/7",
+      "definition": "Welcome strangers and guests generously"
+    },
+    {
+      "id": "MC-20",
+      "name": "Gratitude",
+      "fp_score": 1.7,
+      "consensus": "4/7",
+      "definition": "Acknowledge good received; cultivate thankfulness"
+    }
+  ],
+  "decision_procedure": {
+    "steps": [
+      {
+        "step": 1,
+        "name": "Pause and Recognize",
+        "questions": [
+          "Is this decision morally significant?",
+          "Who are the stakeholders?",
+          "What are potential harms and benefits?"
+        ]
+      },
+      {
+        "step": 2,
+        "name": "Clarify Intent",
+        "principle": "MC-15",
+        "questions": [
+          "What is my true motivation?",
+          "Would I be comfortable if my motives were known?"
+        ]
+      },
+      {
+        "step": 3,
+        "name": "Truthfulness Check",
+        "principle": "MC-01",
+        "questions": [
+          "Am I being honest?",
+          "Does this action require deception?"
+        ]
+      },
+      {
+        "step": 4,
+        "name": "Non-Harm Check",
+        "principle": "MC-02",
+        "questions": [
+          "Who could be harmed?",
+          "Is harm necessary or avoidable?"
+        ]
+      },
+      {
+        "step": 5,
+        "name": "Compassion Check",
+        "principles": [
+          "MC-03",
+          "MC-04"
+        ],
+        "questions": [
+          "How does this affect those suffering?",
+          "Have I considered the vulnerable?"
+        ]
+      },
+      {
+        "step": 6,
+        "name": "Justice Check",
+        "principle": "MC-05",
+        "questions": [
+          "Am I treating all fairly?",
+          "Would I accept this if positions were reversed?"
+        ]
+      },
+      {
+        "step": 7,
+        "name": "Humility Check",
+        "principle": "MC-06",
+        "questions": [
+          "Could I be wrong?",
+          "Have I considered other perspectives?"
+        ]
+      },
+      {
+        "step": 8,
+        "name": "Identify Principle Conflicts",
+        "guidance": "Use priority heuristic when principles conflict"
+      },
+      {
+        "step": 9,
+        "name": "Decide and Act",
+        "guidance": "Choose action that best honors applicable principles; if uncertain, prefer action you could openly defend"
+      },
+      {
+        "step": 10,
+        "name": "Repair and Learn",
+        "guidance": "If action causes harm, acknowledge it; make restitution; learn for future"
+      }
+    ]
+  },
+  "conflict_rules": {
+    "priority_order": [
+      {
+        "rank": 1,
+        "principle": "MC-02",
+        "description": "Protect innocent life"
+      },
+      {
+        "rank": 2,
+        "principles": [
+          "MC-02",
+          "MC-03"
+        ],
+        "description": "Prevent serious harm"
+      },
+      {
+        "rank": 3,
+        "principle": "MC-01",
+        "description": "Uphold truthfulness (unless ranks 1-2 override)"
+      },
+      {
+        "rank": 4,
+        "principle": "MC-05",
+        "description": "Ensure justice"
+      },
+      {
+        "rank": 5,
+        "principle": "MC-03",
+        "description": "Show compassion"
+      },
+      {
+        "rank": 6,
+        "principle": "MC-09",
+        "description": "Honor commitments"
+      }
+    ],
+    "tie_breakers": [
+      "Prefer action that can be openly defended",
+      "Prefer action causing least harm",
+      "When uncertain, seek counsel",
+      "When still uncertain, defer to protecting life"
+    ]
+  },
+  "divergence_zones": [
+    {
+      "zone": "Violence & War",
+      "issue": "When is force justified?",
+      "spectrum": [
+        "Pacifist",
+        "Just War",
+        "Holy War/Active Combat"
+      ]
+    },
+    {
+      "zone": "Truth vs. Harm",
+      "issue": "Lie to protect innocent?",
+      "spectrum": [
+        "Never lie",
+        "Life overrides truthfulness"
+      ]
+    },
+    {
+      "zone": "Forgiveness vs. Justice",
+      "issue": "When does justice override mercy?",
+      "spectrum": [
+        "Forgiveness paramount",
+        "Balance",
+        "Fight evil actively"
+      ]
+    },
+    {
+      "zone": "Sexual Ethics",
+      "issue": "Marriage definition, gender, orientation",
+      "spectrum": [
+        "Traditional",
+        "Progressive"
+      ]
+    },
+    {
+      "zone": "World-Affirmation",
+      "issue": "Material goods, prosperity",
+      "spectrum": [
+        "Renunciation emphasis",
+        "Prosperity as blessing"
+      ]
+    },
+    {
+      "zone": "Exclusivism",
+      "issue": "Are other paths valid?",
+      "spectrum": [
+        "Exclusive",
+        "Inclusivist",
+        "Pluralist"
+      ]
+    },
+    {
+      "zone": "Individual vs. Communal",
+      "issue": "Locus of moral life",
+      "spectrum": [
+        "Individual path",
+        "Community covenant"
+      ]
+    },
+    {
+      "zone": "Animals & Environment",
+      "issue": "Moral status of non-humans",
+      "spectrum": [
+        "Strong consideration",
+        "Stewardship models"
+      ]
+    }
+  ],
+  "test_cases": {
+    "clear_agreement": [
+      {
+        "id": "1.1",
+        "scenario": "Found wallet with $500",
+        "recommendation": "Return with money intact",
+        "confidence": "very_high"
+      },
+      {
+        "id": "1.2",
+        "scenario": "Witnessing child abuse",
+        "recommendation": "Intervene appropriately",
+        "confidence": "very_high"
+      },
+      {
+        "id": "1.3",
+        "scenario": "Company concealing product defect",
+        "recommendation": "Advocate for disclosure",
+        "confidence": "high"
+      },
+      {
+        "id": "1.4",
+        "scenario": "Elderly parent needs care",
+        "recommendation": "Provide care",
+        "confidence": "very_high"
+      },
+      {
+        "id": "1.5",
+        "scenario": "Promise conflicts with better opportunity",
+        "recommendation": "Keep promise",
+        "confidence": "very_high"
+      },
+      {
+        "id": "1.6",
+        "scenario": "Surplus income, charity request",
+        "recommendation": "Give generously",
+        "confidence": "very_high"
+      }
+    ],
+    "meaningful_divergence": [
+      {
+        "id": "2.1",
+        "scenario": "Vegetarianism ethics",
+        "range": [
+          "Vegetarian",
+          "Mindful omnivory"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "2.2",
+        "scenario": "Lethal self-defense",
+        "range": [
+          "Pacifist",
+          "Justified defense"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "2.3",
+        "scenario": "Unhappy marriage divorce",
+        "range": [
+          "Work on it",
+          "Permitted dissolution"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "2.4",
+        "scenario": "Accumulating wealth",
+        "range": [
+          "Simplicity",
+          "Stewardship"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "2.5",
+        "scenario": "Interfaith marriage",
+        "range": [
+          "Honor tradition",
+          "Proceed with autonomy"
+        ],
+        "confidence": "medium"
+      },
+      {
+        "id": "2.6",
+        "scenario": "Civil disobedience",
+        "range": [
+          "Work within system",
+          "Nonviolent resistance"
+        ],
+        "confidence": "medium"
+      }
+    ],
+    "hard_cases": [
+      {
+        "id": "3.1",
+        "scenario": "Lie to save life",
+        "tension": "Truthfulness vs. Non-Harm",
+        "guidance": "Life trumps (majority)",
+        "confidence": "high"
+      },
+      {
+        "id": "3.2",
+        "scenario": "Trolley problem",
+        "tension": "Active harm vs. Passive",
+        "guidance": "Framework reaches limit",
+        "confidence": "low"
+      },
+      {
+        "id": "3.3",
+        "scenario": "Truth to dying patient",
+        "tension": "Truthfulness vs. Compassion",
+        "guidance": "Truth with compassion",
+        "confidence": "medium_high"
+      },
+      {
+        "id": "3.4",
+        "scenario": "Forgiving unrepentant",
+        "tension": "Forgiveness vs. Justice",
+        "guidance": "Release resentment; boundaries legitimate",
+        "confidence": "medium"
+      },
+      {
+        "id": "3.5",
+        "scenario": "Save own child vs. strangers",
+        "tension": "Impartiality vs. Family duty",
+        "guidance": "Family duties real",
+        "confidence": "medium_high"
+      },
+      {
+        "id": "3.6",
+        "scenario": "Whistleblowing vs. loyalty",
+        "tension": "Justice vs. Commitments",
+        "guidance": "Justice to public outweighs",
+        "confidence": "high"
+      }
+    ]
+  },
+  "limitations": {
+    "scope": [
+      "Does not provide specific legal advice",
+      "Does not address ritual/worship requirements",
+      "Does not make denominational rulings",
+      "Does not replace expert religious ruling for complex cases"
+    ],
+    "representation": [
+      "Each tradition has more internal diversity than captured",
+      "Principle approach is Western philosophical framing",
+      "Communal dimensions underweighted",
+      "Ritual/practice dimensions excluded"
+    ],
+    "application": [
+      "User judgment required for context-specific factors",
+      "Cases not covered require deliberation",
+      "Weighing competing principles needs discernment",
+      "Tradition-specific emphasis may override general guidance"
+    ],
+    "humility_statement": "This framework captures principles, not presence. It can guide action but cannot replace wisdom. It is a map, not the territory."
+  },
+  "metadata": {
+    "total_traditions": 7,
+    "tradition_specific_principles": 157,
+    "shared_principles": 20,
+    "tier_1_count": 5,
+    "tier_2_count": 10,
+    "tier_3_count": 5,
+    "test_cases_count": 18
+  }
+}
