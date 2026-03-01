@@ -109,6 +109,26 @@ body {
   animation: fadeUp 1s ease 0.9s forwards;
 }
 
+.hero-cta {
+  display: inline-block;
+  margin-top: 2.5rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  background: var(--gold);
+  color: var(--ink);
+  transition: all 0.3s;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.1s forwards;
+}
+
+.hero-cta:hover {
+  background: var(--gold-light);
+}
+
 .hero-scroll {
   position: absolute;
   bottom: 2rem;
@@ -575,6 +595,7 @@ body {
   <h1>N<span class="ai-glow">AI</span>MA</h1>
   <p class="hero-sub">20 moral principles drawn from 7 faith traditions, built into the soul of an AI agent.</p>
   <p class="hero-meaning">Moral wisdom, encoded.</p>
+  <a href="http://ask.naimasoul.com" target="_blank" class="hero-cta">Try NAIMA</a>
   <div class="hero-scroll"></div>
 </section>
 
@@ -587,6 +608,7 @@ body {
   <a href="#agent">The Agent</a>
   <a href="#prompts">Prompts</a>
   <a href="#get-it">Get It</a>
+  <a href="http://ask.naimasoul.com" target="_blank" style="color: var(--gold-dark); font-weight: 600;">Try It</a>
 </nav>
 
 <!-- ORIGIN STORY -->
@@ -928,7 +950,8 @@ escalate if necessary. Document everything.
   <h2>Use It. Adapt It. Make It Better.</h2>
   <p>The full prompts, SOUL-v1.0.0 framework, JSON schema, and agent configuration are open-source.</p>
   <div class="cta-buttons">
-    <a href="https://github.com/omidtoloui/NAIMA" target="_blank" class="cta-btn primary">GitHub Repo</a>
+    <a href="http://ask.naimasoul.com" target="_blank" class="cta-btn primary">Try NAIMA</a>
+    <a href="https://github.com/omidtoloui/NAIMA" target="_blank" class="cta-btn">GitHub Repo</a>
   </div>
 </section>
 
